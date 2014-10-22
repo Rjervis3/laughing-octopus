@@ -24,7 +24,9 @@
      ***********************************************************************/
 
 
-/* Supplemental problem 6 */
+/* Supplemental problem 6, a program to print the numbers 1 to n, where n *
+ * is a number entered by the user, along with its non-trivial factors,   *
+ * the sum of the factors, and the classification of the number */
 
 
 
@@ -34,6 +36,9 @@
 
 char* classification (int number, int factor_sum);
 
+// pre-conditions: Number entered is positive, 
+//post-conditions: Program correctly prints number, factors, sum, 
+//                     and classification 
 int main()
 {
   //read and print a max number
@@ -51,15 +56,15 @@ int main()
   int i, j, factor, sum=1;
   for(i=1; i<=max; i++)          //first loop to go 1 to n
     {
-      sum=1;   //reset sum to 0 after each number 1 to n
+      sum=1;   //reset sum to 1 after each number (1 is factor of all #s)
       printf("%2d : " , i);
       for (j=1; j<i; j++)            //second loop to test each factor 1 to n
 	{                            //notice bounds to ignore trivial factors
-	if ((i % j)==0 && j!=1)              //factor if j divides i evenly
+	if ((i % j)==0 && j!=1)              //j a factor if j divides i exactly
 	  {
 	    factor=j;
 	    printf("%d ", factor);
-	    sum+=factor;
+	    sum+=factor;                   //add each non-trivial factor to sum
 	    }
       }
 	if(sum != 0)
@@ -70,14 +75,15 @@ int main()
   return 0;
 }
 
-
+//pre-conditions: number is positive
+//post-conditions: program returns correct number classification
 char *classification (int number, int factor_sum)
 {char* type;
   //unit type
   if (number == 1)
     type="Unit";
   //prime if not a unit and all factors trivial
-  else if (factor_sum == 1)  //no factors = sum = 1
+  else if (factor_sum == 1)  //no factors -> sum = 1
     type="Prime";
   //defective if not unit or prime and sum < n
   else if(factor_sum < number)
