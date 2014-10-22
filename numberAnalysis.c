@@ -56,21 +56,33 @@ int main()
   int i, j, factor, sum=1;
   for(i=1; i<=max; i++)          //first loop to go 1 to n
     {
-      sum=1;   //reset sum to 1 after each number (1 is factor of all #s)
-      printf("%2d : " , i);
-      for (j=1; j<i; j++)            //second loop to test each factor 1 to n
-	{                            //notice bounds to ignore trivial factors
-	if ((i % j)==0 && j!=1)              //j a factor if j divides i exactly
+     
+
+      printf("%2d:" , i);            //print n :
+      if (i==1){
+	sum=0;  
+       	printf(":"); 
+      }
+      else sum =1;
+
+
+
+      for (j=1; j<i; j++)            //second loop to test each factor 1 to n-1
+	{                           
+	if ((i % j)== 0 && j !=1)          //j a factor if j divides i exactly
 	  {
 	    factor=j;
-	    printf("%d ", factor);
+	    printf(" %d,", factor);       //print nontrivial factor
 	    sum+=factor;                   //add each non-trivial factor to sum
 	    }
-      }
-	if(sum != 0)
-	  printf(":%2d", sum);
-	printf(" : %s", classification(i, sum));     
-	printf("\n");
+	else if (j==1)
+	  printf(":");
+        
+	}printf("\b ");      //delete comma after last factor
+        
+      printf(": %d ", sum);     
+      printf(": %s", classification(i, sum));     
+      printf("\n");
     }
   return 0;
 }
