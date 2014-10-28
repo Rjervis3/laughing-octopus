@@ -2,8 +2,8 @@
      * Name: Renn Jervis                                                   *
      * Box: 3762                                                           *
      * Supplememntal Problem 6: Defective, Perfect,                        *  
-     * , and Superperfect Numbers                                          *
-     * Assignment for ...                                                   *
+     * and Superperfect Numbers                                            *
+     * Assignment for ...                                                  *
      ***********************************************************************/
 
      /**********************************************************************
@@ -20,15 +20,13 @@
      *   is complete AND that I/we have not talked to anyone else          *
      *   (e.g., CSC 161 students) about the solution to this problem       *
      *                                                                     *
-     *   Signature:   Rj                                                     *
+     *   Signature:                                                        *
      ***********************************************************************/
 
 
 /* Supplemental problem 6, a program to print the numbers 1 to n, where n *
  * is a number entered by the user, along with its non-trivial factors,   *
  * the sum of the factors, and the classification of the number */
-
-
 
 
 
@@ -43,7 +41,7 @@ int main()
 {
   //read and print a max number
   int max;
-  printf("This prgram will list certain requrements for numbers 1 to n\n");
+  printf("This program will list certain requrements for numbers 1 to n\n");
   printf("Please enter a integer number n: ");
   scanf("%d", &max);          //store entered number in max
   printf("The number you entered for n was: %d\n\n", max);
@@ -67,7 +65,7 @@ int main()
 	if ((i % j)== 0 && j !=1)          //j a factor if j divides i exactly
 	  {
 	    factor=j;
-	    printf(" %d,", factor);      //print nontrivial factor
+	    printf("%2d,", factor);      //print nontrivial factor
 	    // printf(" ");
 	    sum+=factor;  //add each non-trivial factor to sum
 	  }
