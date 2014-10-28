@@ -3,7 +3,7 @@
      * Box: 3762                                                           *
      * Supplememntal Problem 6: Defective, Perfect,                        *  
      * , and Superperfect Numbers                                          *
-     * Assignment for ...                                                  *
+     * Assignment for ...                                                   *
      ***********************************************************************/
 
      /**********************************************************************
@@ -46,10 +46,10 @@ int main()
   printf("This prgram will list certain requrements for numbers 1 to n\n");
   printf("Please enter a integer number n: ");
   scanf("%d", &max);          //store entered number in max
-  printf("The number you entered for n was: %d\n", max);
+  printf("The number you entered for n was: %d\n\n", max);
 
   //print the table of numbers
-  printf("The classification of numbers:\n\n");
+  printf("The classification of numbers:\n");
   printf("n : non-trivial factors : sum of proper factors : classification\n");
 
   //create these data for numbers 1 to n and print in table form
@@ -58,27 +58,22 @@ int main()
     {
      
 
-      printf("%2d:" , i);            //print n :
-      if (i==1){
-	sum=0;  
-       	printf(":"); 
-      }
+      printf("%2d : " , i);            //print n :
+      if (i==1)	sum=0; 
       else sum =1;
 
-
-
       for (j=1; j<i; j++)            //second loop to test each factor 1 to n-1
-	{                           
+	{                          
 	if ((i % j)== 0 && j !=1)          //j a factor if j divides i exactly
 	  {
 	    factor=j;
-	    printf(" %d,", factor);       //print nontrivial factor
-	    sum+=factor;                   //add each non-trivial factor to sum
-	    }
-	else if (j==1)
-	  printf(":");
-        
-	}printf("\b ");      //delete comma after last factor
+	    printf(" %d,", factor);      //print nontrivial factor
+	    // printf(" ");
+	    sum+=factor;  //add each non-trivial factor to sum
+	  }
+
+	}
+      printf("\b ");      //delete comma after last factor
         
       printf(": %d ", sum);     
       printf(": %s", classification(i, sum));     
