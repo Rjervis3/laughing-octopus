@@ -3,7 +3,7 @@
      * Box: 3762                                                           *
      * Supplememntal Problem 6: Defective, Perfect,                        *  
      * , and Superperfect Numbers                                          *
-     * Assignment for ...                                                   *
+     * Assignment for ...                                                  *
      ***********************************************************************/
 
      /**********************************************************************
@@ -28,17 +28,18 @@
  * is a number entered by the user, along with its non-trivial factors,   *
  * the sum of the factors, and the classification of the number */
 
-
-
-
-
 #include <stdio.h>
 
+
+void sum_funct(int number, int* sum);
 char* classification (int number, int factor_sum);
+
 
 // pre-conditions: Number entered is positive, 
 //post-conditions: Program correctly prints number, factors, sum, 
 //                     and classification 
+
+
 int main()
 {
   //read and print a max number
@@ -48,38 +49,42 @@ int main()
   scanf("%d", &max);          //store entered number in max
   printf("The number you entered for n was: %d\n\n", max);
 
-  //print the table of numbers
+ //title table of numbers
   printf("The classification of numbers:\n");
-  printf("n : non-trivial factors : sum of proper factors : classification\n");
+  printf("n : classification : sum of proper factors: non-trivial factors\n");
 
-  //create these data for numbers 1 to n and print in table form
+ //create these data for numbers 1 to n and print in table form
   int i, j, factor, sum=1;
   for(i=1; i<=max; i++)          //first loop to go 1 to n
     {
-     
 
-      printf("%2d : " , i);            //print n :
+      printf("%4d : " , i);            //print n :
       if (i==1)	sum=0; 
       else sum =1;
-
-      for (j=1; j<i; j++)            //second loop to test each factor 1 to n-1
-	{                          
-	if ((i % j)== 0 && j !=1)          //j a factor if j divides i exactly
+      sum_funct(i, &sum);
+      printf("%s:", classification(i, sum));
+      printf(" %d:", sum);     
+     
+      if ((i % j)== 0 && j !=1)          //j a factor if j divides i exactly
 	  {
-	    factor=j;
-	    printf(" %d,", factor);      //print nontrivial factor
-	    // printf(" ");
-	    sum+=factor;  //add each non-trivial factor to sum
+	    printf(" %d,", j);      //print nontrivial factor
 	  }
-
-	}
-      printf("\b ");      //delete comma after last factor
-        
-      printf(": %d ", sum);     
-      printf(": %s", classification(i, sum));     
       printf("\n");
     }
   return 0;
+}
+
+void sum_funct(int number, int *sum)
+{
+  
+  int j ;
+  for (j=1; j<number; j++)            //second loop to test each factor 1 to n-1
+    {                          
+      if ((number % j)== 0 && j !=1)        //j a factor if j divides i exactly
+	{
+	 *sum+=j;  //add each non-trivial factor to sum
+	}
+    }
 }
 
 //pre-conditions: number is positive
