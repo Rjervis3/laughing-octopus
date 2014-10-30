@@ -1,7 +1,7 @@
      /**********************************************************************
      * Name: Renn Jervis                                                   *
      * Box: 3762                                                           *
-     * Supplememntal Problem 6: Defective, Perfect,                        *  
+     * Supplemental Problem 6 (ex cred): Defective, Perfect,               *  
      * and Superperfect Numbers                                            *
      * Assignment for ...                                                  *
      ***********************************************************************/
@@ -52,26 +52,29 @@ int main()
 
   //create these data for numbers 1 to n and print in table form
   int i, j, factor, sum=1;
+  char leading=0;
   for(i=1; i<=max; i++)          //first loop to go 1 to n
     {
      
 
-      printf("%2d : " , i);            //print n :
+      printf("%2d :" , i);            //print n :
       if (i==1)	sum=0; 
       else sum =1;
-
+      printf("%c", leading);
       for (j=1; j<i; j++)            //second loop to test each factor 1 to n-1
 	{                          
 	if ((i % j)== 0 && j !=1)          //j a factor if j divides i exactly
-	  {
+	  { leading=',';
 	    factor=j;
-	    printf("%2d,", factor);      //print nontrivial factor
+	    printf("%2d", factor);      //print nontrivial factor
 	    // printf(" ");
 	    sum+=factor;  //add each non-trivial factor to sum
-	  }
+            printf("%c", leading);
+	  } 
+        leading = 0;
 
 	}
-      printf("\b ");      //delete comma after last factor
+      // printf("\b ");      //delete comma after last factor
         
       printf(": %d ", sum);     
       printf(": %s", classification(i, sum));     
