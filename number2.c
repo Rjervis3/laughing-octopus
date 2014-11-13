@@ -14,6 +14,9 @@
      *     http://stackoverflow.com/questions/1496313/                     *
      *                           returning-c-string-from-a-function        *
      *    for info on how to return a sting from a funct                   *
+     *     referenced http://stackoverflow.com/questions/1809399/c-how-to  *
+     *     -justify-output-lines-using-printf-to-get-equal-length          *
+     *     for how to left-justify with printf                             *
      *   Help obtained                                                     *
      *     [none]                                                          *
      *   My/our signature(s) below confirms that the above list of sources *
@@ -51,7 +54,8 @@ int main()
 
  //title table of numbers
   printf("The classification of numbers:\n");
-  printf("n : classification : sum of proper factors: non-trivial factors\n");
+  printf("   n : classification : sum of proper factors: "); 
+  printf("non-trivial factors\n");
 
  //create these data for numbers 1 to n and print in table form
   int i, j, factor, sum=1;
@@ -62,15 +66,21 @@ int main()
       if (i==1)	sum=0; 
       else sum =1;
       sum_funct(i, &sum);
-      printf("%s:", classification(i, sum));
-      printf(" %d:", sum);     
-     
-      if ((i % j)== 0 && j !=1)          //j a factor if j divides i exactly
-	  {
-	    printf(" %d,", j);      //print nontrivial factor
-	  }
+      printf("%-15s: ", classification(i, sum));
+      printf("%-20d :", sum);
+      char leading='\0';
+      for(j=1; j<i; j++)
+	{  
+	  if ((i % j)== 0 && j !=1)          //j a factor if j divides i exactly
+	    {
+	      printf("%c%2d", leading, j);      //print nontrivial factor
+	      leading=',';
+	    }
+	}
+      leading='\0';	
       printf("\n");
     }
+  printf("\n");
   return 0;
 }
 

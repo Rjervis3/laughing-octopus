@@ -35,7 +35,7 @@
 
 #include <stdio.h>
 
-char* classification (int number, int factor_sum);
+char * classification (int number, int factor_sum);
 
 // pre-conditions: Number entered is positive, 
 //post-conditions: Program correctly prints number, factors, sum, 
@@ -53,7 +53,8 @@ int main()
 
   //print the table of numbers
   printf("The classification of numbers:\n");
-  printf(" n : non-trivial factors : sum of proper factors : classification\n");
+  printf("    n : non-trivial factors : sum of proper factors :");
+  printf(" classification\n");
 
   //create these data for numbers 1 to n and print in table form
   int i, j, factor, sum=1;
