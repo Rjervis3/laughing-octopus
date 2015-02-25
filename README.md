@@ -7,3 +7,6 @@ factors, the sum of the factors, and the classification of the number. Number cl
 - Defective if the sum of its factors is less than the number itself
 - Perfect if the factor sum is equal to the number
 - Super Perfect if the factor sum is greater than the number
+- 
+
+The second version of the program prints the list of non-trivial factors at the end.
